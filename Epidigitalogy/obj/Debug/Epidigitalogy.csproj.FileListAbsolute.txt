@@ -1,0 +1,5 @@
+C:\Projects\epidigitalogy\WebApp\Epidigitalogy\bin\epidigitalogy.dll
+C:\Projects\epidigitalogy\WebApp\Epidigitalogy\bin\epidigitalogy.pdb
+C:\Projects\epidigitalogy\WebApp\Epidigitalogy\obj\Debug\Epidigitalogy.csprojResolveAssemblyReference.cache
+C:\Projects\epidigitalogy\WebApp\Epidigitalogy\obj\Debug\epidigitalogy.dll
+C:\Projects\epidigitalogy\WebApp\Epidigitalogy\obj\Debug\epidigitalogy.pdb

@@ -1,0 +1,257 @@
+/* Main chart colors */
+.C {
+	/* User Control alert */
+	fill: #29A329;
+}
+
+.D {
+	/* Download detected */
+	fill: #B366B3;
+}
+
+.T {
+	/* Threat found */
+	fill: #f00;
+	z-index: 100;
+}
+
+.U {
+	/* Virus Definition Update */
+	fill: #ccc;
+}
+
+.X {
+	/* Last Checkin Time */
+	fill: #00f;
+}
+
+.V {
+	/* Virus alert */
+	fill: #f00;
+	width: 4px;
+	height: 4px;
+	z-index: 100;
+}
+
+.blocked {
+	fill: #f00;
+}
+
+.severity-critical {
+	fill: #f00;
+}
+
+.severity-high {
+	fill: #ff6a00;
+}
+
+.severity-medium {
+	fill: #ffd800;
+}
+
+.severity-low {
+	fill: #33cc33;
+}
+
+.bar {
+	fill: steelblue;
+}
+
+.bar:hover {
+	fill: brown;
+}
+
+.axis {
+	font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+	fill: none;
+	stroke: #000;
+	shape-rendering: crispEdges;
+}
+
+.x.axis path {
+	display: none;
+}
+
+.headerTable {
+	margin: 7px;
+	border-spacing: 8px;
+}
+
+#details > table {
+    font-size: 0.75em;
+}
+
+#details > table th {
+	text-align: left;
+}
+
+td.header {
+	text-align:left;
+	width:100%;
+}
+
+td.sumheader {
+	margin: 10px;
+    vertical-align:top;
+	width:100%;
+	text-align:center;
+	border: 1px solid black;
+}
+
+.Action_Failed {
+	stroke:#990000;
+	fill:#990000;
+}
+.No_Repair_Available {
+	stroke:#B20000;	
+	fill:#B20000;
+}
+.Access_Denied {	
+	stroke:#CC0000;	
+	fill:#CC0000;
+}
+.AVLeft_alone	{	
+	stroke:#E60000;	
+	fill:#E60000;
+}
+.No_Action_Taken {	
+	stroke:#FF0000;	
+	fill:#FF0000;
+}
+.RepairFailedPowerEraser {	
+	stroke:#FF1919;	
+	fill:#FF1919;
+}
+.Attachment_stripped {	
+	stroke:#FF3333;	
+	fill:#FF3333;
+}
+.Not_Applicable	{	
+	stroke:#FF4D4D;	
+	fill:#FF4D4D;
+}
+.Not_applicable	{	
+	stroke:#FF6666;	
+	fill:#FF6666;
+}
+.Bad {	
+	stroke:#FF8080;	
+	fill:#FF8080;
+}
+.Backup	{	
+	stroke:#1A661A;	
+	fill:#1A661A;
+}
+.Process_Terminated	{	
+	stroke:#1F7A1F;	
+	fill:#1F7A1F;
+}
+.Deleted, .block, .Block {	
+	stroke:#248F24;	
+	fill:#248F24;
+}
+.Quarantined {	
+	stroke:#29A329;	
+	fill:#29A329;
+}
+.AVCleanedDeletion {	
+	stroke:#2EB82E;	
+	fill:#2EB82E;
+}
+.Cleaned {	
+	stroke:#33CC33;	
+	fill:#33CC33;
+}
+.Cleaned_or_Macros_Deleted {	
+	stroke:#47D147;	
+	fill:#47D147;
+}
+.Saved {
+	stroke:#5CD65C;	
+	fill:#5CD65C;
+}
+.Move_Back {	
+	stroke:#70DB70;	
+	fill:#70DB70;
+}
+.Rename_Back {	
+	stroke:#85E085;	
+	fill:#85E085;
+}
+.Undo {	
+	stroke:#99E699;	
+	fill:#99E699;
+}
+.Renamed {	
+	stroke:#ADEBAD;	
+	fill:#ADEBAD;
+}
+.Pending_Repair	{	
+	stroke:#2E8AE6;	
+	fill:#2E8AE6;
+}
+.Partially_repaired	{	
+	stroke:#3399FF;	
+	fill:#3399FF;
+}
+.Reboot_Pending	{	
+	stroke:#47A3FF;	
+	fill:#47A3FF;
+}
+.Reboot_Processing	{	
+	stroke:#5CADFF;	
+	fill:#5CADFF;
+}
+.Details_Pending {	
+	stroke:#70B8FF;	
+	fill:#70B8FF;
+}
+.Unknown { 
+	stroke:#8D198D;
+	fill:#8D198D;
+}
+.Detected_by_using_the_commercial_application_list {
+	stroke:	#A64DA6;
+	fill:	#A64DA6;
+}
+.Forced_detection_by_using_the_file_name {
+	stroke:	#B366B3;
+	fill:	#B366B3;
+}
+.Forced_detection_by_using_the_file_hash {
+	stroke:	#C080C0;
+	fill:#C080C0;
+}
+.Excluded { 
+	stroke:#CC99CC;
+	fill:#CC99CC;
+}
+
+.UCcontinue { 
+	stroke:#B20000;
+	fill:#B20000;
+}
+.UCallow{ 
+	stroke:#33CC33;
+	fill:#33CC33;
+}
+.UCblock { 
+	stroke:#FF1919;
+	fill:#FF1919;
+}
+.UCask { 
+	stroke:#2E8AE6;
+	fill:#2E8AE6;
+}
+.UCterminate { 
+	stroke:#990000;
+	fill:#990000;
+}
+.IPSOUT { 
+	stroke:#FF0000;
+	fill:#FF0000;
+}
