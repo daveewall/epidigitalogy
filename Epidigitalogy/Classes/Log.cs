@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace epidigitalogy
+namespace epidigitalogy.Classes
 {
 	public class Log
 	{

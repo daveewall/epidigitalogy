@@ -1,6 +1,6 @@
 ﻿function updateAlertCountByGroup() {
 	var margin = { top: 0, right: 0, bottom: 0, left: 0 };
-	var width = 300 - margin.left - margin.right;
+	var width = $("#groupTotals").width() - margin.left - margin.right;
 	var height = 70 - margin.top - margin.bottom;
 
 	var x = d3.scale.ordinal()
@@ -27,7 +27,7 @@
 	$.ajax({
 		type: "POST",
 		contentType: "application/json; charset=utf-8",
-		url: "/Population.asmx/GetAlertCountsByGroup",
+		url: "ws/Graphs.asmx/GetAlertCountsByGroup",
 		data: '{ "system": "' + $("#system").val() + '" }',
 		dataType: "json",
 		converters: {
@@ -70,7 +70,7 @@
 
 function updateAlertCountByDate() {
 	var margin = { top: 0, right: 0, bottom: 0, left: 0 },
-			width = 385 - margin.left - margin.right,
+			width = $("#dateTotals").width() - margin.left - margin.right,
 			height = 70 - margin.top - margin.bottom;
 
 	var x = d3.scale.ordinal()
@@ -97,7 +97,7 @@ function updateAlertCountByDate() {
 	$.ajax({
 		type: "POST",
 		contentType: "application/json; charset=utf-8",
-		url: "/Population.asmx/GetAlertCountsByDay",
+		url: "ws/Graphs.asmx/GetAlertCountsByDay",
 		data: '{ "system": "' + $("#system").val() + '" }',
 		dataType: "json",
 		converters: {
