@@ -21,7 +21,7 @@ $(document).ready(function () {
 
 	$("#system").change(updateReload);
 	$("#feed").change(updateReload);
-	$("#group").change(updateReload);
+	$("#groupName").change(updateReload);
 	$("#startDate").change(updateReload);
 	$("#endDate").change(updateReload);
 
