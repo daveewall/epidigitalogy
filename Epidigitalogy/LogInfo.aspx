@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="LogInfo.aspx.cs" Inherits="epidigitalogy.GetLogInfo" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="LogInfo.aspx.cs" Inherits="epidigitalogy.LogInfo" %>
 <!DOCTYPE html>
 <html lang="en">
 	<head>

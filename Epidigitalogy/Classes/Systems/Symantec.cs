@@ -320,8 +320,8 @@ namespace epidigitalogy.Classes.Systems
 							ON ag.COMPUTER_ID = c.COMPUTER_ID
 						ON a.COMPUTER_IDX = c.COMPUTER_ID
 						LEFT JOIN V_VIRUS v ON a.VIRUSNAME_IDX = v.VIRUSNAME_IDX
-				WHERE	v.TYPE IN (1, 2, 3, 4, 5, 6, 8, 9, 10, 14)
-						AND COALESCE(g.Name, '') = COALESCE(@GroupName, g.Name, '')
+				WHERE	--v.TYPE IN (1, 2, 3, 4, 5, 6, 8, 9, 10, 14)  -- Causes issues in new SEP versions, where SONAR detects issues behaviorally
+						COALESCE(g.Name, '') = COALESCE(@GroupName, g.Name, '')
 						AND a.ALERTDATETIME BETWEEN @StartDate AND @EndDate;
 			";
 		}
@@ -1197,62 +1197,62 @@ namespace epidigitalogy.Classes.Systems
 		public Dictionary<string, string> getFlareAntiVirusFieldNames() {
 			Dictionary<string, string> e = new Dictionary<string, string>();
 
-			e["gn"] = "Group Name";
-			e["agent_id"] = "Agent ID";
-			e["agent_version"] = "Agent Version";
-			e["last_update_time"] = "Last Update Time";
-			e["full_name"] = "Full Name";
-			e["email"] = "Email";
-			e["job_title"] = "Job Title";
-			e["department"] = "Department";
-			e["office_phone"] = "Office Phone";
-			e["mobile_phone"] = "Mobile Phone";
-			e["infected"] = "Infected";
-			e["last_scan_time"] = "Last Scan Time";
-			e["last_virus_time"] = "Last Virus Time";
-			e["last_download_time"] = "Last Download Time";
+			e["Group Name"] = "gn";
+			e["Agent ID"] = "agent_id";
+			e["Agent Version"] = "agent_version";
+			e["Last Update Time"] = "last_update_time";
+			e["Full Name"] = "full_name";
+			e["Email"] = "email";
+			e["Job Title"] = "job_title";
+			e["Department"] = "department";
+			e["Office Phone"] = "office_phone";
+			e["Mobile Phone"] = "mobile_phone";
+			e["Infected"] = "infected";
+			e["Last Scan Time"] = "last_scan_time";
+			e["Last Virus Time"] = "last_virus_time";
+			e["Last Download Time"] = "last_download_time";
 
-			e["avengine_onoff"] = "AV Engine on/off";
-			e["tamper_onoff"] = "Tamper on/off";
-			e["firewall_onoff"] = "Firewall on/off";
-			e["reboot_required"] = "Reboot Required";
-			e["reboot_reason"] = "Reboot Reason";
-			e["computer_name"] = "Computer Name";
-			e["computer_domain_name"] = "Computer Domain Name";
-			e["operating_system"] = "Operating System";
-			e["service_pack"] = "Service Pack";
-			e["current_login_user"] = "Current Login User";
-			e["current_login_domain"] = "Current Login Domain";
-			e["dns_server1"] = "DNS Server 1";
-			e["dns_server2"] = "DNS Server 2";
-			e["dhcp_server"] = "DHCP Server";
-			e["mac_addr1"] = "MAC Address 1";
-			e["ip_addr1"] = "IP Address 1";
-			e["gateway1"] = "Gateway 1";
-			e["subnet_mask1"] = "Subnet Mask 1";
+			e["AV Engine on/off"] = "avengine_onoff";
+			e["Tamper on/off"] = "tamper_onoff";
+			e["Firewall on/off"] = "firewall_onoff";
+			e["Reboot Required"] = "reboot_required";
+			e["Reboot Reason"] = "reboot_reason";
+			e["Computer Name"] = "computer_name";
+			e["Computer Domain Name"] = "computer_domain_name";
+			e["Operating System"] = "operating_system";
+			e["Service Pack"] = "service_pack";
+			e["Current Login User"] = "current_login_user";
+			e["Current Login Domain"] = "current_login_domain";
+			e["DNS Server 1"] = "dns_server1";
+			e["DNS Server 2"] = "dns_server2";
+			e["DHCP Server"] = "dhcp_server";
+			e["MAC Address 1"] = "mac_addr1";
+			e["IP Address 1"] = "ip_addr1";
+			e["Gateway 1"] = "gateway1";
+			e["Subnet Mask 1"] = "subnet_mask1";
 
-			e["filepath"] = "File Path";
-			e["action_taken"] = "Action Taken";
-			e["source"] = "Source";
-			e["app_name"] = "App Name";
-			e["app_company"] = "App Company";
-			e["app_version"] = "App Version";
-			e["filesize"] = "File Size";
-			e["app_type"] = "App Type";
-			e["virus_name"] = "Virus Name";
-			e["sensitivity"] = "Sensitivity";
-			e["detection_score"] = "Detection Score";
-			e["truscan_engine_version"] = "Truscan Engine Version";
-			e["submission_recommendation"] = "Submission Recommendation";
-			e["whitelist_reason"] = "Whitelist Reason";
-			e["disposition"] = "Disposition";
-			e["confidence"] = "Confidence";
-			e["prevalence"] = "Prevalence";
-			e["url"] = "URL";
-			e["web_domain"] = "Web Domain";
-			e["downloader"] = "Downloader";
-			e["cids_onoff"] = "CIDS on/off";
-			e["risk_level"] = "Risk Level";
+			e["File Path"] = "filepath";
+			e["Action Taken"] = "action_taken";
+			e["Source"] = "source";
+			e["App Name"] = "app_name";
+			e["App Company"] = "app_company";
+			e["App Version"] = "app_version";
+			e["File Size"] = "filesize";
+			e["App Type"] = "app_type";
+			e["Virus Name"] = "virus_name";
+			e["Sensitivity"] = "sensitivity";
+			e["Detection Score"] = "detection_score";
+			e["Truscan Engine Version"] = "truscan_engine_version";
+			e["Submission Recommendation"] = "submission_recommendation";
+			e["Whitelist Reason"] = "whitelist_reason";
+			e["Disposition"] = "disposition";
+			e["Confidence"] = "confidence";
+			e["Prevalence"] = "prevalence";
+			e["URL"] = "url";
+			e["Web Domain"] = "web_domain";
+			e["Downloader"] = "downloader";
+			e["CIDS on/off"] = "cids_onoff";
+			e["Risk Level"] = "risk_level";
 
 			return e;
 		}
@@ -1451,60 +1451,59 @@ namespace epidigitalogy.Classes.Systems
 		public Dictionary<string, string> getFlareIPSFieldNames() {
 			Dictionary<string, string> e = new Dictionary<string, string>();
 
-			e["gn"] = "Group Name";
-			e["agent_id"] = "Agent ID";
-			e["agent_version"] = "Agent Version";
-			e["last_update_time"] = "Last Update Time";
-			e["full_name"] = "Full Name";
-			e["email"] = "Email";
-			e["job_title"] = "Job Title";
-			e["department"] = "Department";
-			e["office_phone"] = "Office Phone";
-			e["mobile_phone"] = "Mobile Phone";
-			e["infected"] = "Infected";
-			e["last_scan_time"] = "Last Scan Time";
-			e["last_virus_time"] = "Last Virus Time";
-			e["last_download_time"] = "Last Download Time";
+			e["Group Name"] = "gn";
+			e["Agent ID"] = "agent_id";
+			e["Agent Version"] = "agent_version";
+			e["Last Update Time"] = "last_update_time";
+			e["Full Name"] = "full_name";
+			e["Email"] = "email";
+			e["Job Title"] = "job_title";
+			e["Department"] = "department";
+			e["Office Phone"] = "office_phone";
+			e["Mobile Phone"] = "mobile_phone";
+			e["Infected"] = "infected";
+			e["Last Scan Time"] = "last_scan_time";
+			e["Last Virus Time"] = "last_virus_time";
+			e["Last Download Time"] = "last_download_time";
 
-			e["avengine_onoff"] = "AV Engine on/off";
-			e["tamper_onoff"] = "Tamper on/off";
-			e["firewall_onoff"] = "Firewall on/off";
-			e["reboot_required"] = "Reboot Required";
-			e["reboot_reason"] = "Reboot Reason";
-			e["computer_name"] = "Computer Name";
-			e["computer_domain_name"] = "Computer Domain Name";
-			e["operating_system"] = "Operating System";
-			e["service_pack"] = "Service Pack";
-			e["current_login_user"] = "Current Login User";
-			e["current_login_domain"] = "Current Login Domain";
-			e["dns_server1"] = "DNS Server 1";
-			e["dns_server2"] = "DNS Server 2";
-			e["dhcp_server"] = "DHCP Server";
-			e["mac_addr1"] = "MAC Address 1";
-			e["ip_addr1"] = "IP Address 1";
-			e["gateway1"] = "Gateway 1";
-			e["subnet_mask1"] = "Subnet Mask 1";
+			e["AV Engine on/off"] = "avengine_onoff";
+			e["Tamper on/off"] = "tamper_onoff";
+			e["Firewall on/off"] = "firewall_onoff";
+			e["Reboot Required"] = "reboot_required";
+			e["Reboot Reason"] = "reboot_reason";
+			e["Computer Name"] = "computer_name";
+			e["Computer Domain Name"] = "computer_domain_name";
+			e["Operating System"] = "operating_system";
+			e["Service Pack"] = "service_pack";
+			e["Current Login User"] = "current_login_user";
+			e["Current Login Domain"] = "current_login_domain";
+			e["DNS Server 1"] = "dns_server1";
+			e["DNS Server 2"] = "dns_server2";
+			e["DHCP Server"] = "dhcp_server";
+			e["MAC Address 1"] = "mac_addr1";
+			e["IP Address 1"] = "ip_addr1";
+			e["Gateway 1"] = "gateway1";
+			e["Subnet Mask 1"] = "subnet_mask1";
 
-			e["traffic_type"] = "Traffic Type";
-			e["severity"] = "Severity";
-			e["local_ip"] = "Local IP";
-			e["remote_ip"] = "Remote IP";
-			e["remote_hostname"] = "Remote Hostname";
-			e["local_port"] = "Local Port";
-			e["remote_port"] = "Remote Port";
-			e["direction"] = "Direction";
-			e["repetition"] = "Repetition";
-			e["protocol"] = "Protocol";
-			e["app_name"] = "App Name";
-			e["alert"] = "Alert";
-			e["location"] = "Location";
-			e["intrusion_url"] = "Intrusion URL";
-			e["intrusion_payload_url"] = "Intrusion Payload URL";
-			e["description"] = "Description";
+			e["Traffic Type"] = "traffic_type";
+			e["Severity"] = "severity";
+			e["Local IP"] = "local_ip";
+			e["Remote IP"] = "remote_ip";
+			e["Remote Hostname"] = "remote_hostname";
+			e["Local Port"] = "local_port";
+			e["Remote Port"] = "remote_port";
+			e["Direction"] = "direction";
+			e["Repetition"] = "repetition";
+			e["Protocol"] = "protocol";
+			e["App Name"] = "app_name";
+			e["Alert"] = "alert";
+			e["Location"] = "location";
+			e["Intrusion URL"] = "intrusion_url";
+			e["Intrusion Payload URL"] = "intrusion_payload_url";
+			e["Description"] = "description";
 
 			return e;
 		}
-
 
 		public List<Dictionary<string, string>> getFlareDownloadDetail(string groupName, DateTime startDate, DateTime endDate) {
 			SqlConnection conn = new SqlConnection();
@@ -1658,52 +1657,772 @@ namespace epidigitalogy.Classes.Systems
 		public Dictionary<string, string> getFlareDownloadFieldNames() {
 			Dictionary<string, string> e = new Dictionary<string, string>();
 
-			e["gn"] = "Group Name";
-			e["agent_id"] = "Agent ID";
-			e["agent_version"] = "Agent Version";
-			e["last_update_time"] = "Last Update Time";
-			e["full_name"] = "Full Name";
-			e["email"] = "Email";
-			e["job_title"] = "Job Title";
-			e["department"] = "Department";
-			e["office_phone"] = "Office Phone";
-			e["mobile_phone"] = "Mobile Phone";
-			e["infected"] = "Infected";
-			e["last_scan_time"] = "Last Scan Time";
-			e["last_virus_time"] = "Last Virus Time";
-			e["last_download_time"] = "Last Download Time";
+			e["Group Name"] = "gn";
+			e["Agent ID"] = "agent_id";
+			e["Agent Version"] = "agent_version";
+			e["Last Update Time"] = "last_update_time";
+			e["Full Name"] = "full_name";
+			e["Email"] = "email";
+			e["Job Title"] = "job_title";
+			e["Department"] = "department";
+			e["Office Phone"] = "office_phone";
+			e["Mobile Phone"] = "mobile_phone";
+			e["Infected"] = "infected";
+			e["Last Scan Time"] = "last_scan_time";
+			e["Last Virus Time"] = "last_virus_time";
+			e["Last Download Time"] = "last_download_time";
 
-			e["avengine_onoff"] = "AV Engine on/off";
-			e["tamper_onoff"] = "Tamper on/off";
-			e["firewall_onoff"] = "Firewall on/off";
-			e["reboot_required"] = "Reboot Required";
-			e["reboot_reason"] = "Reboot Reason";
-			e["computer_name"] = "Computer Name";
-			e["computer_domain_name"] = "Computer Domain Name";
-			e["operating_system"] = "Operating System";
-			e["service_pack"] = "Service Pack";
-			e["current_login_user"] = "Current Login User";
-			e["current_login_domain"] = "Current Login Domain";
-			e["dns_server1"] = "DNS Server 1";
-			e["dns_server2"] = "DNS Server 2";
-			e["dhcp_server"] = "DHCP Server";
-			e["mac_addr1"] = "MAC Address 1";
-			e["ip_addr1"] = "IP Address 1";
-			e["gateway1"] = "Gateway 1";
-			e["subnet_mask1"] = "Subnet Mask 1";
+			e["AV Engine on/off"] = "avengine_onoff";
+			e["Tamper on/off"] = "tamper_onoff";
+			e["Firewall on/off"] = "firewall_onoff";
+			e["Reboot Required"] = "reboot_required";
+			e["Reboot Reason"] = "reboot_reason";
+			e["Computer Name"] = "computer_name";
+			e["Computer Domain Name"] = "computer_domain_name";
+			e["Operating System"] = "operating_system";
+			e["Service Pack"] = "service_pack";
+			e["Current Login User"] = "current_login_user";
+			e["Current Login Domain"] = "current_login_domain";
+			e["DNS Server 1"] = "dns_server1";
+			e["DNS Server 2"] = "dns_server2";
+			e["DHCP Server"] = "dhcp_server";
+			e["MAC Address 1"] = "mac_addr1";
+			e["IP Address 1"] = "ip_addr1";
+			e["Gateway 1"] = "gateway1";
+			e["Subnet Mask 1"] = "subnet_mask1";
 
-			e["app_name"] = "App Name";
-			e["app_company"] = "App Company";
-			e["app_version"] = "App Version";
-			e["filesize"] = "Filesize";
-			e["description"] = "Description";
-			e["app_md5"] = "App MD5";
-			e["app_sha2"] = "App SHA2";
-			e["url"] = "URL";
-			e["signer"] = "Signer";
-			e["last_modify_time"] = "Last Modify Time";
+			e["App Name"] = "app_name";
+			e["App Company"] = "app_company";
+			e["App Version"] = "app_version";
+			e["Filesize"] = "filesize";
+			e["Description"] = "description";
+			e["App MD5"] = "app_md5";
+			e["App SHA2"] = "app_sha2";
+			e["URL"] = "url";
+			e["Signer"] = "signer";
+			e["Last Modify Time"] = "last_modify_time";
+
+			return e;
+		}
+
+		public List<Dictionary<string, string>> getFlareUserControlDetail(string groupName, DateTime startDate, DateTime endDate) {
+			SqlConnection conn = new SqlConnection();
+			SqlCommand cmd = new SqlCommand();
+			SqlDataReader rdr = null;
+
+			List<Dictionary<string, string>> events = new List<Dictionary<string, string>>();
+
+			string sql = @"
+				SELECT	ag.AGENT_ID AS agent_id,
+						c.COMPUTER_ID AS id,
+						g.NAME as gn,
+						ag.AGENT_VERSION AS agent_version,
+						dateadd(second,[LAST_UPDATE_TIME]/1000, '1970-01-01') AS last_update_time,
+						ag.FULL_NAME AS full_name,
+						ag.EMAIL AS email,
+						ag.JOB_TITLE AS job_title, 
+						ag.DEPARTMENT AS department,
+						ag.OFFICE_PHONE AS office_phone,
+						ag.MOBILE_PHONE AS mobile_phone,
+						CASE WHEN ag.INFECTED = 1 THEN CAST(1 AS bit) ELSE CAST(0 AS bit) END AS infected,
+						dateadd(second,[LAST_SCAN_TIME]/1000, '1970-01-01') AS last_scan_time,
+						CASE WHEN LAST_VIRUS_TIME = 0 THEN NULL ELSE dateadd(second,[LAST_VIRUS_TIME]/1000, '1970-01-01') END AS last_virus_time,
+						dateadd(second,[LAST_DOWNLOAD_TIME]/1000, '1970-01-01') AS last_download_time,
+						CASE WHEN ag.AVENGINE_ONOFF = 1 THEN CAST(1 AS bit) ELSE CAST(0 AS bit) END AS avengine_onoff,
+						CASE WHEN ag.TAMPER_ONOFF = 1 THEN CAST(1 AS bit) ELSE CAST(0 AS bit) END AS tamper_onoff,
+						CASE WHEN ag.FIREWALL_ONOFF = 1 THEN CAST(1 AS bit) ELSE CAST(0 AS bit) END AS firewall_onoff,
+						CASE WHEN ag.REBOOT_REQUIRED = 1 THEN CAST(1 AS bit) ELSE CAST(0 AS bit) END AS reboot_required,
+						ag.REBOOT_REASON AS reboot_reason,
+						c.COMPUTER_NAME AS computer_name,
+						c.COMPUTER_DOMAIN_NAME AS computer_domain_name,
+						c.OPERATION_SYSTEM AS operating_system,
+						c.SERVICE_PACK AS service_pack,
+						c.CURRENT_LOGIN_USER AS current_login_user,
+						c.CURRENT_LOGIN_DOMAIN AS current_login_domain,
+						c.DNS_SERVER1 AS dns_server1,
+						c.DNS_SERVER2 AS dns_server2,
+						c.DHCP_SERVER AS dhcp_server,
+						c.MAC_ADDR1 AS mac_addr1,
+						c.IP_ADDR1 AS ip_addr1,
+						c.GATEWAY1 AS gateway1,
+						c.SUBNET_MASK1 AS subnet_mask1,
+
+--						dateadd(second, l.EVENT_TIME / 1000, '1970-01-01') AS ed,
+--						dateadd(second, l.BEGIN_TIME / 1000, '1970-01-01') AS begin_time,
+--						dateadd(second, l.END_TIME / 1000, '1970-01-01') AS end_time,
+						(SELECT
+							CASE l.EVENT_ID
+								WHEN 501 THEN 'Application Control Driver'
+								WHEN 502 THEN 'Application Control Rules'
+								WHEN 999 THEN 'Tamper Protection'
+							END) AS event_type,
+						l.severity,
+						(SELECT
+							CASE l.ACTION
+								WHEN 0 THEN 'allow'
+								WHEN 1 THEN 'block' 
+								WHEN 2 THEN 'ask'
+								WHEN 3 THEN 'continue'
+								WHEN 4 THEN 'terminate'
+							END) AS action,
+						l.description,
+						l.rule_name,
+						l.caller_process_name,
+--						l.parameter,
+						l.alert,
+						l.user_name,
+						l.domain_name,
+--						l.vapi_name,
+						l.ip_addr,
+--						l.file_size,
+						l.param_device_id,
+						COUNT(1) AS count
+				FROM	v_agent_behavior_log l
+						INNER JOIN SEM_AGENT ag
+							INNER JOIN V_SEM_COMPUTER c ON ag.[COMPUTER_ID] = c.[COMPUTER_ID]
+							INNER JOIN IDENTITY_MAP g ON ag.GROUP_ID = g.[ID]
+						on ag.AGENT_ID = l.AGENT_ID
+				WHERE	l.caller_process_name != 'SysPlant'
+						AND COALESCE(g.Name, '') = COALESCE(@GroupName, g.Name, '')
+						AND DATEADD(second, l.EVENT_TIME / 1000, '1970-01-01') BETWEEN @StartDate AND @EndDate
+				GROUP	BY
+						ag.AGENT_ID,
+						c.COMPUTER_ID,
+						g.NAME,
+						ag.AGENT_VERSION,
+						dateadd(second,[LAST_UPDATE_TIME]/1000, '1970-01-01'),
+						ag.FULL_NAME,
+						ag.EMAIL,
+						ag.JOB_TITLE,
+						ag.DEPARTMENT,
+						ag.OFFICE_PHONE,
+						ag.MOBILE_PHONE,
+						CASE WHEN ag.INFECTED = 1 THEN CAST(1 AS bit) ELSE CAST(0 AS bit) END,
+						dateadd(second,[LAST_SCAN_TIME]/1000, '1970-01-01'),
+						CASE WHEN LAST_VIRUS_TIME = 0 THEN NULL ELSE dateadd(second,[LAST_VIRUS_TIME]/1000, '1970-01-01') END,
+						dateadd(second,[LAST_DOWNLOAD_TIME]/1000, '1970-01-01'),
+						CASE WHEN ag.AVENGINE_ONOFF = 1 THEN CAST(1 AS bit) ELSE CAST(0 AS bit) END,
+						CASE WHEN ag.TAMPER_ONOFF = 1 THEN CAST(1 AS bit) ELSE CAST(0 AS bit) END,
+						CASE WHEN ag.FIREWALL_ONOFF = 1 THEN CAST(1 AS bit) ELSE CAST(0 AS bit) END,
+						CASE WHEN ag.REBOOT_REQUIRED = 1 THEN CAST(1 AS bit) ELSE CAST(0 AS bit) END,
+						ag.REBOOT_REASON,
+						c.COMPUTER_NAME,
+						c.COMPUTER_DOMAIN_NAME,
+						c.OPERATION_SYSTEM,
+						c.SERVICE_PACK,
+						c.CURRENT_LOGIN_USER,
+						c.CURRENT_LOGIN_DOMAIN,
+						c.DNS_SERVER1,
+						c.DNS_SERVER2,
+						c.DHCP_SERVER,
+						c.MAC_ADDR1,
+						c.IP_ADDR1,
+						c.GATEWAY1,
+						c.SUBNET_MASK1,
+
+--						dateadd(second, l.EVENT_TIME / 1000, '1970-01-01'),
+--						dateadd(second, l.BEGIN_TIME / 1000, '1970-01-01'),
+--						dateadd(second, l.END_TIME / 1000, '1970-01-01'),
+						l.event_id,
+						l.severity,
+						l.action,
+						l.description,
+						l.rule_name,
+						l.caller_process_name,
+--						l.parameter,
+						l.alert,
+						l.user_name,
+						l.domain_name,
+--						l.vapi_name,
+						l.ip_addr,
+--						l.file_size,
+						l.param_device_id
+				ORDER	BY g.[NAME],
+						c.COMPUTER_NAME";
+
+			try {
+				conn.ConnectionString = this.sqlConnectionString;
+				conn.Open();
+
+				cmd = new SqlCommand(sql, conn);
+				cmd.CommandType = System.Data.CommandType.Text;
+
+				if (String.IsNullOrEmpty(groupName)) {
+					cmd.Parameters.Add(new SqlParameter("@GroupName", SqlDbType.VarChar, 100)).Value = DBNull.Value;
+				} else {
+					cmd.Parameters.Add(new SqlParameter("@GroupName", SqlDbType.VarChar, 100)).Value = groupName;
+				}
+				cmd.Parameters.Add(new SqlParameter("@StartDate", SqlDbType.DateTime)).Value = startDate;
+				cmd.Parameters.Add(new SqlParameter("@EndDate", SqlDbType.DateTime)).Value = endDate;
+				rdr = cmd.ExecuteReader();
+
+				while (rdr.Read()) {
+					Dictionary<string, string> e = new Dictionary<string, string>();
+					e["id"] = rdr["id"] == DBNull.Value ? null : (string)rdr["id"];
+//					e["ed"] = ((DateTime)rdr["ed"]).ToString();
+
+					e["gn"] = rdr["gn"] == DBNull.Value ? null : (string)rdr["gn"];
+					e["agent_id"] = rdr["agent_id"] == DBNull.Value ? null : (string)rdr["agent_id"];
+					e["agent_version"] = rdr["agent_version"] == DBNull.Value ? null : (string)rdr["agent_version"];
+					e["last_update_time"] = ((DateTime)rdr["last_update_time"]).ToString();
+					e["full_name"] = rdr["full_name"] == DBNull.Value ? null : (string)rdr["full_name"];
+					e["email"] = rdr["email"] == DBNull.Value ? null : (string)rdr["email"];
+					e["job_title"] = rdr["job_title"] == DBNull.Value ? null : (string)rdr["job_title"];
+					e["department"] = rdr["department"] == DBNull.Value ? null : (string)rdr["department"];
+					e["office_phone"] = rdr["office_phone"] == DBNull.Value ? null : (string)rdr["office_phone"];
+					e["mobile_phone"] = rdr["mobile_phone"] == DBNull.Value ? null : (string)rdr["mobile_phone"];
+					e["infected"] = ((Boolean)rdr["infected"]).ToString();
+					e["last_scan_time"] = ((DateTime)rdr["last_scan_time"]).ToString();
+					e["last_virus_time"] = rdr["last_virus_time"] == DBNull.Value ? null : ((DateTime)rdr["last_virus_time"]).ToString();
+					e["last_download_time"] = ((DateTime)rdr["last_download_time"]).ToString();
+
+					e["avengine_onoff"] = ((Boolean)rdr["avengine_onoff"]).ToString();
+					e["tamper_onoff"] = ((Boolean)rdr["tamper_onoff"]).ToString();
+					e["firewall_onoff"] = ((Boolean)rdr["firewall_onoff"]).ToString();
+					e["reboot_required"] = ((Boolean)rdr["reboot_required"]).ToString();
+					e["reboot_reason"] = rdr["reboot_reason"] == DBNull.Value ? null : (string)rdr["reboot_reason"];
+					e["computer_name"] = rdr["computer_name"] == DBNull.Value ? null : (string)rdr["computer_name"];
+					e["computer_domain_name"] = rdr["computer_domain_name"] == DBNull.Value ? null : (string)rdr["computer_domain_name"];
+					e["operating_system"] = rdr["operating_system"] == DBNull.Value ? null : (string)rdr["operating_system"];
+					e["service_pack"] = rdr["service_pack"] == DBNull.Value ? null : (string)rdr["service_pack"];
+					e["current_login_user"] = rdr["current_login_user"] == DBNull.Value ? null : (string)rdr["current_login_user"];
+					e["current_login_domain"] = rdr["current_login_domain"] == DBNull.Value ? null : (string)rdr["current_login_domain"];
+					e["dns_server1"] = rdr["dns_server1"] == DBNull.Value ? null : Util.LongToIP((long)rdr["dns_server1"]);
+					e["dns_server2"] = rdr["dns_server2"] == DBNull.Value ? null : Util.LongToIP((long)rdr["dns_server2"]);
+					e["dhcp_server"] = rdr["dhcp_server"] == DBNull.Value ? null : Util.LongToIP((long)rdr["dhcp_server"]);
+					e["mac_addr1"] = rdr["mac_addr1"] == DBNull.Value ? null : (string)rdr["mac_addr1"];
+					e["ip_addr1"] = rdr["ip_addr1"] == DBNull.Value ? null : Util.LongToIP((long)rdr["ip_addr1"]);
+					e["gateway1"] = rdr["gateway1"] == DBNull.Value ? null : Util.LongToIP((long)rdr["gateway1"]);
+					e["subnet_mask1"] = rdr["subnet_mask1"] == DBNull.Value ? null : Util.LongToIP((long)rdr["subnet_mask1"]);
+
+
+//					e["begin_time"] = ((DateTime)rdr["begin_time"]).ToString();
+//					e["end_time"] = ((DateTime)rdr["end_time"]).ToString();
+//					e["event_type"] = ((int)rdr["event_type"]).ToString();
+					e["severity"] = rdr["severity"] == DBNull.Value ? null : ((int)rdr["severity"]).ToString();
+					e["action"] = rdr["action"] == DBNull.Value ? null : (string)rdr["action"];
+					e["description"] = rdr["description"] == DBNull.Value ? null : (string)rdr["description"];
+					e["rule_name"] = rdr["rule_name"] == DBNull.Value ? null : (string)rdr["rule_name"];
+					e["caller_process_name"] = rdr["caller_process_name"] == DBNull.Value ? null : (string)rdr["caller_process_name"];
+//					e["parameter"] = rdr["parameter"] == DBNull.Value ? null : (string)rdr["parameter"];
+					e["alert"] = ((int)rdr["alert"]).ToString();
+					e["user_name"] = rdr["user_name"] == DBNull.Value ? null : (string)rdr["user_name"];
+					e["domain_name"] = rdr["domain_name"] == DBNull.Value ? null : (string)rdr["domain_name"];
+//					e["vapi_name"] = rdr["vapi_name"] == DBNull.Value ? null : (string)rdr["vapi_name"];
+					e["ip_addr"] = rdr["ip_addr"] == DBNull.Value ? null : Util.LongToIP((long)rdr["ip_addr"]);
+//					e["file_size"] = ((long)rdr["file_size"]).ToString();
+					e["param_device_id"] = rdr["param_device_id"] == DBNull.Value ? null : (string)rdr["param_device_id"];
+
+					e["count"] = ((int)rdr["count"]).ToString();
+					
+					events.Add(e);
+				}
+			} catch (Exception e) {
+				throw e;
+				//				events = new List<Dictionary<string, string>>();
+			} finally {
+				if (rdr != null) {
+					rdr.Close();
+					rdr.Dispose();
+				}
+				cmd.Dispose();
+				conn.Close();
+				conn.Dispose();
+			}
+
+			return events;
+		}
+
+		public Dictionary<string, string> getFlareUserControlFieldNames() {
+			Dictionary<string, string> e = new Dictionary<string, string>();
+
+			e["Count"] = "count";
+			e["Group Name"] = "gn";
+			e["Agent ID"] = "agent_id";
+			e["Agent Version"] = "agent_version";
+			e["Last Update Time"] = "last_update_time";
+			e["Full Name"] = "full_name";
+			e["Email"] = "email";
+			e["Job Title"] = "job_title";
+			e["Department"] = "department";
+			e["Office Phone"] = "office_phone";
+			e["Mobile Phone"] = "mobile_phone";
+			e["Infected"] = "infected";
+			e["Last Scan Time"] = "last_scan_time";
+			e["Last Virus Time"] = "last_virus_time";
+			e["Last Download Time"] = "last_download_time";
+
+			e["AV Engine on/off"] = "avengine_onoff";
+			e["Tamper on/off"] = "tamper_onoff";
+			e["Firewall on/off"] = "firewall_onoff";
+			e["Reboot Required"] = "reboot_required";
+			e["Reboot Reason"] = "reboot_reason";
+			e["Computer Name"] = "computer_name";
+			e["Computer Domain Name"] = "computer_domain_name";
+			e["Operating System"] = "operating_system";
+			e["Service Pack"] = "service_pack";
+			e["Current Login User"] = "current_login_user";
+			e["Current Login Domain"] = "current_login_domain";
+			e["DNS Server 1"] = "dns_server1";
+			e["DNS Server 2"] = "dns_server2";
+			e["DHCP Server"] = "dhcp_server";
+			e["MAC Address 1"] = "mac_addr1";
+			e["IP Address 1"] = "ip_addr1";
+			e["Gateway 1"] = "gateway1";
+			e["Subnet Mask 1"] = "subnet_mask1";
+
+			//			e["Event Date/Time"] = "ed";
+			//			e["Begin Time"] = "begin_time";
+			//			e["End Time"] = "end_time";
+			e["Event Type"] = "event_type";
+			e["Severity"] = "severity";
+			e["Action"] = "action";
+			e["Description"] = "description";
+			e["Rule Name"] = "rule_name";
+			e["Process Name"] = "caller_process_name";
+			//			e["Parameter"] = "parameter";
+			e["Alert"] = "alert";
+			e["User Name"] = "user_name";
+			e["Domain Name"] = "domain_name";
+			//			e["API Type"] = "vapi_name";
+			e["IP Address"] = "ip_addr";
+			//			e["File Size"] = "file_size";
+			e["Device ID"] = "param_device_id";
+
+			return e;
+		}
+
+		public List<Dictionary<string, string>> getFlareUpdatesDetail(string groupName, DateTime startDate, DateTime endDate) {
+			SqlConnection conn = new SqlConnection();
+			SqlCommand cmd = new SqlCommand();
+			SqlDataReader rdr = null;
+
+			List<Dictionary<string, string>> events = new List<Dictionary<string, string>>();
+
+			string sql = @"
+				SELECT	ag.AGENT_ID AS agent_id,
+						c.COMPUTER_ID AS id,
+						g.NAME as gn,
+						ag.AGENT_VERSION AS agent_version,
+						dateadd(second,[LAST_UPDATE_TIME]/1000, '1970-01-01') AS last_update_time,
+						ag.FULL_NAME AS full_name,
+						ag.EMAIL AS email,
+						ag.JOB_TITLE AS job_title, 
+						ag.DEPARTMENT AS department,
+						ag.OFFICE_PHONE AS office_phone,
+						ag.MOBILE_PHONE AS mobile_phone,
+						CASE WHEN ag.INFECTED = 1 THEN CAST(1 AS bit) ELSE CAST(0 AS bit) END AS infected,
+						dateadd(second,[LAST_SCAN_TIME]/1000, '1970-01-01') AS last_scan_time,
+						CASE WHEN LAST_VIRUS_TIME = 0 THEN NULL ELSE dateadd(second,[LAST_VIRUS_TIME]/1000, '1970-01-01') END AS last_virus_time,
+						dateadd(second,[LAST_DOWNLOAD_TIME]/1000, '1970-01-01') AS last_download_time,
+						CASE WHEN ag.AVENGINE_ONOFF = 1 THEN CAST(1 AS bit) ELSE CAST(0 AS bit) END AS avengine_onoff,
+						CASE WHEN ag.TAMPER_ONOFF = 1 THEN CAST(1 AS bit) ELSE CAST(0 AS bit) END AS tamper_onoff,
+						CASE WHEN ag.FIREWALL_ONOFF = 1 THEN CAST(1 AS bit) ELSE CAST(0 AS bit) END AS firewall_onoff,
+						CASE WHEN ag.REBOOT_REQUIRED = 1 THEN CAST(1 AS bit) ELSE CAST(0 AS bit) END AS reboot_required,
+						ag.REBOOT_REASON AS reboot_reason,
+						c.COMPUTER_NAME AS computer_name,
+						c.COMPUTER_DOMAIN_NAME AS computer_domain_name,
+						c.OPERATION_SYSTEM AS operating_system,
+						c.SERVICE_PACK AS service_pack,
+						c.CURRENT_LOGIN_USER AS current_login_user,
+						c.CURRENT_LOGIN_DOMAIN AS current_login_domain,
+						c.DNS_SERVER1 AS dns_server1,
+						c.DNS_SERVER2 AS dns_server2,
+						c.DHCP_SERVER AS dhcp_server,
+						c.MAC_ADDR1 AS mac_addr1,
+						c.IP_ADDR1 AS ip_addr1,
+						c.GATEWAY1 AS gateway1,
+						c.SUBNET_MASK1 AS subnet_mask1,
+
+						DATEADD(SECOND, l.EVENT_TIME/1000, '1970-01-01') AS ed,
+						l.EVENT_DESC AS description
+
+				FROM	V_AGENT_SYSTEM_LOG l
+						INNER JOIN SEM_AGENT ag
+							INNER JOIN V_SEM_COMPUTER c ON ag.[COMPUTER_ID] = c.[COMPUTER_ID]
+							INNER JOIN IDENTITY_MAP g ON ag.GROUP_ID = g.[ID]
+						on ag.AGENT_ID = l.AGENT_ID
+				WHERE	EVENT_SOURCE = 'SYLINK'
+						AND EVENT_DESC LIKE 'Downloaded%'
+						AND COALESCE(g.Name, '') = COALESCE(@GroupName, g.Name, '')
+						AND DATEADD(second, l.TIME_STAMP / 1000, '1970-01-01') BETWEEN @StartDate AND @EndDate
+				ORDER	BY g.[NAME],
+						c.COMPUTER_NAME,
+						l.TIME_STAMP";
+
+			try {
+				conn.ConnectionString = this.sqlConnectionString;
+				conn.Open();
+
+				cmd = new SqlCommand(sql, conn);
+				cmd.CommandType = System.Data.CommandType.Text;
+
+				if (String.IsNullOrEmpty(groupName)) {
+					cmd.Parameters.Add(new SqlParameter("@GroupName", SqlDbType.VarChar, 100)).Value = DBNull.Value;
+				} else {
+					cmd.Parameters.Add(new SqlParameter("@GroupName", SqlDbType.VarChar, 100)).Value = groupName;
+				}
+				cmd.Parameters.Add(new SqlParameter("@StartDate", SqlDbType.DateTime)).Value = startDate;
+				cmd.Parameters.Add(new SqlParameter("@EndDate", SqlDbType.DateTime)).Value = endDate;
+				rdr = cmd.ExecuteReader();
+
+				while (rdr.Read()) {
+					Dictionary<string, string> e = new Dictionary<string, string>();
+					e["id"] = rdr["id"] == DBNull.Value ? null : (string)rdr["id"];
+					e["ed"] = ((DateTime)rdr["ed"]).ToString();
+
+					e["gn"] = rdr["gn"] == DBNull.Value ? null : (string)rdr["gn"];
+					e["agent_id"] = rdr["agent_id"] == DBNull.Value ? null : (string)rdr["agent_id"];
+					e["agent_version"] = rdr["agent_version"] == DBNull.Value ? null : (string)rdr["agent_version"];
+					e["last_update_time"] = ((DateTime)rdr["last_update_time"]).ToString();
+					e["full_name"] = rdr["full_name"] == DBNull.Value ? null : (string)rdr["full_name"];
+					e["email"] = rdr["email"] == DBNull.Value ? null : (string)rdr["email"];
+					e["job_title"] = rdr["job_title"] == DBNull.Value ? null : (string)rdr["job_title"];
+					e["department"] = rdr["department"] == DBNull.Value ? null : (string)rdr["department"];
+					e["office_phone"] = rdr["office_phone"] == DBNull.Value ? null : (string)rdr["office_phone"];
+					e["mobile_phone"] = rdr["mobile_phone"] == DBNull.Value ? null : (string)rdr["mobile_phone"];
+					e["infected"] = ((Boolean)rdr["infected"]).ToString();
+					e["last_scan_time"] = ((DateTime)rdr["last_scan_time"]).ToString();
+					e["last_virus_time"] = rdr["last_virus_time"] == DBNull.Value ? null : ((DateTime)rdr["last_virus_time"]).ToString();
+					e["last_download_time"] = ((DateTime)rdr["last_download_time"]).ToString();
+
+					e["avengine_onoff"] = ((Boolean)rdr["avengine_onoff"]).ToString();
+					e["tamper_onoff"] = ((Boolean)rdr["tamper_onoff"]).ToString();
+					e["firewall_onoff"] = ((Boolean)rdr["firewall_onoff"]).ToString();
+					e["reboot_required"] = ((Boolean)rdr["reboot_required"]).ToString();
+					e["reboot_reason"] = rdr["reboot_reason"] == DBNull.Value ? null : (string)rdr["reboot_reason"];
+					e["computer_name"] = rdr["computer_name"] == DBNull.Value ? null : (string)rdr["computer_name"];
+					e["computer_domain_name"] = rdr["computer_domain_name"] == DBNull.Value ? null : (string)rdr["computer_domain_name"];
+					e["operating_system"] = rdr["operating_system"] == DBNull.Value ? null : (string)rdr["operating_system"];
+					e["service_pack"] = rdr["service_pack"] == DBNull.Value ? null : (string)rdr["service_pack"];
+					e["current_login_user"] = rdr["current_login_user"] == DBNull.Value ? null : (string)rdr["current_login_user"];
+					e["current_login_domain"] = rdr["current_login_domain"] == DBNull.Value ? null : (string)rdr["current_login_domain"];
+					e["dns_server1"] = rdr["dns_server1"] == DBNull.Value ? null : Util.LongToIP((long)rdr["dns_server1"]);
+					e["dns_server2"] = rdr["dns_server2"] == DBNull.Value ? null : Util.LongToIP((long)rdr["dns_server2"]);
+					e["dhcp_server"] = rdr["dhcp_server"] == DBNull.Value ? null : Util.LongToIP((long)rdr["dhcp_server"]);
+					e["mac_addr1"] = rdr["mac_addr1"] == DBNull.Value ? null : (string)rdr["mac_addr1"];
+					e["ip_addr1"] = rdr["ip_addr1"] == DBNull.Value ? null : Util.LongToIP((long)rdr["ip_addr1"]);
+					e["gateway1"] = rdr["gateway1"] == DBNull.Value ? null : Util.LongToIP((long)rdr["gateway1"]);
+					e["subnet_mask1"] = rdr["subnet_mask1"] == DBNull.Value ? null : Util.LongToIP((long)rdr["subnet_mask1"]);
+
+					e["description"] = rdr["description"] == DBNull.Value ? null : (string)rdr["description"];
+
+					events.Add(e);
+				}
+			} catch (Exception e) {
+				throw e;
+			} finally {
+				if (rdr != null) {
+					rdr.Close();
+					rdr.Dispose();
+				}
+				cmd.Dispose();
+				conn.Close();
+				conn.Dispose();
+			}
+
+			return events;
+		}
+
+		public Dictionary<string, string> getFlareUpdatesFieldNames() {
+			Dictionary<string, string> e = new Dictionary<string, string>();
+
+			e["Group Name"] = "gn";
+			e["Agent ID"] = "agent_id";
+			e["Agent Version"] = "agent_version";
+			e["Last Update Time"] = "last_update_time";
+			e["Full Name"] = "full_name";
+			e["Email"] = "email";
+			e["Job Title"] = "job_title";
+			e["Department"] = "department";
+			e["Office Phone"] = "office_phone";
+			e["Mobile Phone"] = "mobile_phone";
+			e["Infected"] = "infected";
+			e["Last Scan Time"] = "last_scan_time";
+			e["Last Virus Time"] = "last_virus_time";
+			e["Last Download Time"] = "last_download_time";
+
+			e["AV Engine on/off"] = "avengine_onoff";
+			e["Tamper on/off"] = "tamper_onoff";
+			e["Firewall on/off"] = "firewall_onoff";
+			e["Reboot Required"] = "reboot_required";
+			e["Reboot Reason"] = "reboot_reason";
+			e["Computer Name"] = "computer_name";
+			e["Computer Domain Name"] = "computer_domain_name";
+			e["Operating System"] = "operating_system";
+			e["Service Pack"] = "service_pack";
+			e["Current Login User"] = "current_login_user";
+			e["Current Login Domain"] = "current_login_domain";
+			e["DNS Server 1"] = "dns_server1";
+			e["DNS Server 2"] = "dns_server2";
+			e["DHCP Server"] = "dhcp_server";
+			e["MAC Address 1"] = "mac_addr1";
+			e["IP Address 1"] = "ip_addr1";
+			e["Gateway 1"] = "gateway1";
+			e["Subnet Mask 1"] = "subnet_mask1";
+
+			e["Description"] = "description";
+
+			return e;
+		}
+
+		public List<Dictionary<string, string>> getFlareFirewallDetail(string groupName, DateTime startDate, DateTime endDate) {
+			SqlConnection conn = new SqlConnection();
+			SqlCommand cmd = new SqlCommand();
+			SqlDataReader rdr = null;
+
+			List<Dictionary<string, string>> events = new List<Dictionary<string, string>>();
+
+			string sql = @"
+				SELECT	ag.AGENT_ID AS agent_id,
+						c.COMPUTER_ID AS id,
+						g.NAME as gn,
+						ag.AGENT_VERSION AS agent_version,
+						dateadd(second,[LAST_UPDATE_TIME]/1000, '1970-01-01') AS last_update_time,
+						ag.FULL_NAME AS full_name,
+						ag.EMAIL AS email,
+						ag.JOB_TITLE AS job_title, 
+						ag.DEPARTMENT AS department,
+						ag.OFFICE_PHONE AS office_phone,
+						ag.MOBILE_PHONE AS mobile_phone,
+						CASE WHEN ag.INFECTED = 1 THEN CAST(1 AS bit) ELSE CAST(0 AS bit) END AS infected,
+						dateadd(second,[LAST_SCAN_TIME]/1000, '1970-01-01') AS last_scan_time,
+						CASE WHEN LAST_VIRUS_TIME = 0 THEN NULL ELSE dateadd(second,[LAST_VIRUS_TIME]/1000, '1970-01-01') END AS last_virus_time,
+						dateadd(second,[LAST_DOWNLOAD_TIME]/1000, '1970-01-01') AS last_download_time,
+						CASE WHEN ag.AVENGINE_ONOFF = 1 THEN CAST(1 AS bit) ELSE CAST(0 AS bit) END AS avengine_onoff,
+						CASE WHEN ag.TAMPER_ONOFF = 1 THEN CAST(1 AS bit) ELSE CAST(0 AS bit) END AS tamper_onoff,
+						CASE WHEN ag.FIREWALL_ONOFF = 1 THEN CAST(1 AS bit) ELSE CAST(0 AS bit) END AS firewall_onoff,
+						CASE WHEN ag.REBOOT_REQUIRED = 1 THEN CAST(1 AS bit) ELSE CAST(0 AS bit) END AS reboot_required,
+						ag.REBOOT_REASON AS reboot_reason,
+						c.COMPUTER_NAME AS computer_name,
+						c.COMPUTER_DOMAIN_NAME AS computer_domain_name,
+						c.OPERATION_SYSTEM AS operating_system,
+						c.SERVICE_PACK AS service_pack,
+						c.CURRENT_LOGIN_USER AS current_login_user,
+						c.CURRENT_LOGIN_DOMAIN AS current_login_domain,
+						c.DNS_SERVER1 AS dns_server1,
+						c.DNS_SERVER2 AS dns_server2,
+						c.DHCP_SERVER AS dhcp_server,
+						c.MAC_ADDR1 AS mac_addr1,
+						c.IP_ADDR1 AS ip_addr1,
+						c.GATEWAY1 AS gateway1,
+						c.SUBNET_MASK1 AS subnet_mask1,
+
+						DATEADD(SECOND, l.EVENT_TIME/1000, '1970-01-01') AS ed,
+
+						NETWORK_PROTOCOL AS protocol,
+						(SELECT CASE [EVENT_ID]
+							WHEN 301 THEN 'TCP Initiated'
+							WHEN 302 THEN 'UDP datagram'
+							WHEN 303 THEN 'Ping request'
+							WHEN 304 THEN 'TCP Completed'
+							WHEN 305 THEN 'Traffic (other)'
+							WHEN 306 THEN 'ICMP packet'
+							WHEN 307 THEN 'Ethernet packet'
+							WHEN 308 THEN 'IP Packet' END) AS traffic_type,
+						LOCAL_HOST_IP AS local_ip,
+						REMOTE_HOST_IP AS remote_ip,
+						REMOTE_HOST_NAME AS remote_hostname,
+						LOCAL_PORT AS local_port,
+						REMOTE_PORT AS remote_port,
+						(SELECT CASE TRAFFIC_DIRECTION
+							WHEN 0 THEN 'Unknown'
+							WHEN 1 THEN 'Inbound'
+							WHEN 2 THEN 'Outbound'
+						END) AS direction,
+						SEVERITY AS severity,
+						NULL AS severity_string,
+						BLOCKED AS blocked,
+						APP_NAME AS app_name,
+						ALERT AS Alert,
+						RULE_NAME AS rule_name,
+						LOCATION_NAME AS location,
+						REPETITION AS repetition
+				FROM	V_AGENT_TRAFFIC_LOG l
+						INNER JOIN SEM_AGENT ag
+							INNER JOIN V_SEM_COMPUTER c ON ag.[COMPUTER_ID] = c.[COMPUTER_ID]
+							INNER JOIN IDENTITY_MAP g ON ag.GROUP_ID = g.[ID]
+						on ag.AGENT_ID = l.AGENT_ID
+				WHERE	l.BLOCKED = 1
+						AND COALESCE(g.Name, '') = COALESCE(@GroupName, g.Name, '')
+						AND DATEADD(second, l.TIME_STAMP / 1000, '1970-01-01') BETWEEN @StartDate AND @EndDate
+				ORDER	BY g.[NAME],
+						c.COMPUTER_NAME";
+
+			try {
+				conn.ConnectionString = this.sqlConnectionString;
+				conn.Open();
+
+				cmd = new SqlCommand(sql, conn);
+				cmd.CommandType = System.Data.CommandType.Text;
+
+				if (String.IsNullOrEmpty(groupName)) {
+					cmd.Parameters.Add(new SqlParameter("@GroupName", SqlDbType.VarChar, 100)).Value = DBNull.Value;
+				} else {
+					cmd.Parameters.Add(new SqlParameter("@GroupName", SqlDbType.VarChar, 100)).Value = groupName;
+				}
+				cmd.Parameters.Add(new SqlParameter("@StartDate", SqlDbType.DateTime)).Value = startDate;
+				cmd.Parameters.Add(new SqlParameter("@EndDate", SqlDbType.DateTime)).Value = endDate;
+				rdr = cmd.ExecuteReader();
+
+				while (rdr.Read()) {
+					Dictionary<string, string> e = new Dictionary<string, string>();
+					e["id"] = rdr["id"] == DBNull.Value ? null : (string)rdr["id"];
+					e["ed"] = ((DateTime)rdr["ed"]).ToString();
+
+					e["gn"] = rdr["gn"] == DBNull.Value ? null : (string)rdr["gn"];
+					e["agent_id"] = rdr["agent_id"] == DBNull.Value ? null : (string)rdr["agent_id"];
+					e["agent_version"] = rdr["agent_version"] == DBNull.Value ? null : (string)rdr["agent_version"];
+					e["last_update_time"] = ((DateTime)rdr["last_update_time"]).ToString();
+					e["full_name"] = rdr["full_name"] == DBNull.Value ? null : (string)rdr["full_name"];
+					e["email"] = rdr["email"] == DBNull.Value ? null : (string)rdr["email"];
+					e["job_title"] = rdr["job_title"] == DBNull.Value ? null : (string)rdr["job_title"];
+					e["department"] = rdr["department"] == DBNull.Value ? null : (string)rdr["department"];
+					e["office_phone"] = rdr["office_phone"] == DBNull.Value ? null : (string)rdr["office_phone"];
+					e["mobile_phone"] = rdr["mobile_phone"] == DBNull.Value ? null : (string)rdr["mobile_phone"];
+					e["infected"] = ((Boolean)rdr["infected"]).ToString();
+					e["last_scan_time"] = ((DateTime)rdr["last_scan_time"]).ToString();
+					e["last_virus_time"] = rdr["last_virus_time"] == DBNull.Value ? null : ((DateTime)rdr["last_virus_time"]).ToString();
+					e["last_download_time"] = ((DateTime)rdr["last_download_time"]).ToString();
+
+					e["avengine_onoff"] = ((Boolean)rdr["avengine_onoff"]).ToString();
+					e["tamper_onoff"] = ((Boolean)rdr["tamper_onoff"]).ToString();
+					e["firewall_onoff"] = ((Boolean)rdr["firewall_onoff"]).ToString();
+					e["reboot_required"] = ((Boolean)rdr["reboot_required"]).ToString();
+					e["reboot_reason"] = rdr["reboot_reason"] == DBNull.Value ? null : (string)rdr["reboot_reason"];
+					e["computer_name"] = rdr["computer_name"] == DBNull.Value ? null : (string)rdr["computer_name"];
+					e["computer_domain_name"] = rdr["computer_domain_name"] == DBNull.Value ? null : (string)rdr["computer_domain_name"];
+					e["operating_system"] = rdr["operating_system"] == DBNull.Value ? null : (string)rdr["operating_system"];
+					e["service_pack"] = rdr["service_pack"] == DBNull.Value ? null : (string)rdr["service_pack"];
+					e["current_login_user"] = rdr["current_login_user"] == DBNull.Value ? null : (string)rdr["current_login_user"];
+					e["current_login_domain"] = rdr["current_login_domain"] == DBNull.Value ? null : (string)rdr["current_login_domain"];
+					e["dns_server1"] = rdr["dns_server1"] == DBNull.Value ? null : Util.LongToIP((long)rdr["dns_server1"]);
+					e["dns_server2"] = rdr["dns_server2"] == DBNull.Value ? null : Util.LongToIP((long)rdr["dns_server2"]);
+					e["dhcp_server"] = rdr["dhcp_server"] == DBNull.Value ? null : Util.LongToIP((long)rdr["dhcp_server"]);
+					e["mac_addr1"] = rdr["mac_addr1"] == DBNull.Value ? null : (string)rdr["mac_addr1"];
+					e["ip_addr1"] = rdr["ip_addr1"] == DBNull.Value ? null : Util.LongToIP((long)rdr["ip_addr1"]);
+					e["gateway1"] = rdr["gateway1"] == DBNull.Value ? null : Util.LongToIP((long)rdr["gateway1"]);
+					e["subnet_mask1"] = rdr["subnet_mask1"] == DBNull.Value ? null : Util.LongToIP((long)rdr["subnet_mask1"]);
+
+					if (rdr["local_ip"] != DBNull.Value) {
+						if (Type.GetTypeCode(rdr.GetFieldType(rdr.GetOrdinal("local_ip"))) == TypeCode.String) {
+							e["local_ip"] = Util.IP2Long((string)rdr["local_ip"]).ToString();
+						} else {
+							e["local_ip"] = Util.LongToIP((long)rdr["local_ip"]);
+						}
+					}
+					if (rdr["remote_ip"] != DBNull.Value) {
+						if (Type.GetTypeCode(rdr.GetFieldType(rdr.GetOrdinal("remote_ip"))) == TypeCode.String) {
+							e["remote_ip"] = Util.IP2Long((string)rdr["remote_ip"]).ToString();
+						} else {
+							e["remote_ip"] = Util.LongToIP((long)rdr["remote_ip"]);
+						}
+					}
+/*					if (rdr["protocol"] != DBNull.Value) {
+						switch ((byte)rdr["protocol"]) {
+							case 1:
+								e["protocol"] = "Others";
+								break;
+							case 2:
+								e["protocol"] = "TCP";
+								break;
+							case 3:
+								e["protocol"] = "UDP";
+								break;
+							case 4:
+								e["protocol"] = "ICMP";
+								break;
+						}
+					}
+*/					e["protocol"] = rdr["protocol"] == DBNull.Value ? null : ((byte)rdr["protocol"]).ToString();
+					e["traffic_type"] = rdr["traffic_type"] == DBNull.Value ? null : (string)rdr["traffic_type"];
+					e["remote_hostname"] = rdr["remote_hostname"] == DBNull.Value ? null : (string)rdr["remote_hostname"];
+					e["local_port"] = ((int)rdr["local_port"]).ToString();
+					e["remote_port"] = ((int)rdr["remote_port"]).ToString();
+					e["direction"] = rdr["direction"] == DBNull.Value ? null : (string)rdr["direction"];
+					e["repetition"] = ((int)rdr["repetition"]).ToString();
+					if (rdr["blocked"] != DBNull.Value && (byte)rdr["blocked"] == 1) {
+						e["action_taken"] = "Blocked";
+					}
+					e["app_name"] = rdr["app_name"] == DBNull.Value ? null : (string)rdr["app_name"];
+					if (rdr["alert"] != DBNull.Value && (byte)rdr["alert"] == 1) {
+						e["alert"] = "true";
+					}
+					e["rule_name"] = rdr["rule_name"] == DBNull.Value ? null : (string)rdr["rule_name"];
+					e["location"] = rdr["location"] == DBNull.Value ? null : (string)rdr["location"];
+
+					events.Add(e);
+				}
+			} catch (Exception e) {
+				throw e;
+			} finally {
+				if (rdr != null) {
+					rdr.Close();
+					rdr.Dispose();
+				}
+				cmd.Dispose();
+				conn.Close();
+				conn.Dispose();
+			}
+
+			return events;
+		}
+
+		public Dictionary<string, string> getFlareFirewallFieldNames() {
+			Dictionary<string, string> e = new Dictionary<string, string>();
+
+			e["Group Name"] = "gn";
+			e["Agent ID"] = "agent_id";
+			e["Agent Version"] = "agent_version";
+			e["Last Update Time"] = "last_update_time";
+			e["Full Name"] = "full_name";
+			e["Email"] = "email";
+			e["Job Title"] = "job_title";
+			e["Department"] = "department";
+			e["Office Phone"] = "office_phone";
+			e["Mobile Phone"] = "mobile_phone";
+			e["Infected"] = "infected";
+			e["Last Scan Time"] = "last_scan_time";
+			e["Last Virus Time"] = "last_virus_time";
+			e["Last Download Time"] = "last_download_time";
+
+			e["AV Engine on/off"] = "avengine_onoff";
+			e["Tamper on/off"] = "tamper_onoff";
+			e["Firewall on/off"] = "firewall_onoff";
+			e["Reboot Required"] = "reboot_required";
+			e["Reboot Reason"] = "reboot_reason";
+			e["Computer Name"] = "computer_name";
+			e["Computer Domain Name"] = "computer_domain_name";
+			e["Operating System"] = "operating_system";
+			e["Service Pack"] = "service_pack";
+			e["Current Login User"] = "current_login_user";
+			e["Current Login Domain"] = "current_login_domain";
+			e["DNS Server 1"] = "dns_server1";
+			e["DNS Server 2"] = "dns_server2";
+			e["DHCP Server"] = "dhcp_server";
+			e["MAC Address 1"] = "mac_addr1";
+			e["IP Address 1"] = "ip_addr1";
+			e["Gateway 1"] = "gateway1";
+			e["Subnet Mask 1"] = "subnet_mask1";
+
+			e["Local IP"] = "local_ip";
+			e["Remote IP"] = "remote_ip";
+			e["Protocol"] = "protocol";
+			e["Traffic Type"] = "traffic_type";
+			e["Remote Hostname"] = "remote_hostname";
+			e["Local Port"] = "local_port";
+			e["Remote Port"] = "remote_port";
+			e["Direction"] = "direction";
+			e["Repetition"] = "repetition";
+			e["Action Taken"] = "action_taken";
+			e["App Name"] = "app_name";
+			e["Alert"] = "alert";
+			e["Rule Name"] = "rule_name";
+			e["Location"] = "location";
 
 			return e;
 		}
 	}
+
+
 }

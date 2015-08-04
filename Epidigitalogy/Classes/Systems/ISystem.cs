@@ -22,5 +22,14 @@ namespace epidigitalogy.Classes.Systems
 
 		List<Dictionary<string, string>> getFlareDownloadDetail(string groupName, DateTime startDate, DateTime endDate);
 		Dictionary<string, string> getFlareDownloadFieldNames();
+
+		List<Dictionary<string, string>> getFlareUserControlDetail(string groupName, DateTime startDate, DateTime endDate);
+		Dictionary<string, string> getFlareUserControlFieldNames();
+
+		List<Dictionary<string, string>> getFlareUpdatesDetail(string groupName, DateTime startDate, DateTime endDate);
+		Dictionary<string, string> getFlareUpdatesFieldNames();
+
+		List<Dictionary<string, string>> getFlareFirewallDetail(string groupName, DateTime startDate, DateTime endDate);
+		Dictionary<string, string> getFlareFirewallFieldNames();
 	}
 }
