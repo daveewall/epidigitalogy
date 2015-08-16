@@ -35,6 +35,7 @@ namespace epidigitalogy.ws
 
 		[WebMethod]
 		public string GetFlare(string system, string feed, string groupName, DateTime startDate, DateTime endDate) {
+			endDate = endDate.AddDays(1).AddMilliseconds(-1);
 			ISystem sys = (ISystem)Activator.CreateInstance(Type.GetType("epidigitalogy.Classes.Systems." + system));
 			switch (feed) {
 				case "av":
@@ -42,13 +43,13 @@ namespace epidigitalogy.ws
 				case "ips":
 					return JsonConvert.SerializeObject(sys.getFlareIPSDetail(groupName, startDate, endDate));
 				case "uc":
-					break;
+					return JsonConvert.SerializeObject(sys.getFlareUserControlDetail(groupName, startDate, endDate));
 				case "dl":
 					return JsonConvert.SerializeObject(sys.getFlareDownloadDetail(groupName, startDate, endDate));
 				case "fw":
-					break;
+					return JsonConvert.SerializeObject(sys.getFlareFirewallDetail(groupName, startDate, endDate));
 				case "up":
-					break;
+					return JsonConvert.SerializeObject(sys.getFlareUpdatesDetail(groupName, startDate, endDate));
 				default:
 					break;
 			}
@@ -64,13 +65,13 @@ namespace epidigitalogy.ws
 				case "ips":
 					return JsonConvert.SerializeObject(sys.getFlareIPSFieldNames());
 				case "uc":
-					break;
+					return JsonConvert.SerializeObject(sys.getFlareUserControlFieldNames());
 				case "dl":
 					return JsonConvert.SerializeObject(sys.getFlareDownloadFieldNames());
 				case "fw":
-					break;
+					return JsonConvert.SerializeObject(sys.getFlareFirewallFieldNames());
 				case "up":
-					break;
+					return JsonConvert.SerializeObject(sys.getFlareUpdatesFieldNames());
 				default:
 					break;
 			}
