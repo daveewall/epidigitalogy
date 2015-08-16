@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="GetLogInfo.aspx.cs" Inherits="epidigitalogy.GetLogInfo" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Flare.aspx.cs" Inherits="epidigitalogy.Flare" %>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -10,10 +10,10 @@
 		<title>Digital Disease Flare Comparator</title>
 
 		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
 
 		<!-- Optional theme -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="/css/bootstrap/bootstrap-theme.min.css">
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -86,6 +86,12 @@
 							<option value="up">Updates</option>
 						</select>
 					</li>
+					
+					<li class="searchEntry">Preset:</li>
+					<li>
+						<select id="preset" onchange="javascript:presetSelected(this.value);">
+						</select>
+					</li>
 
 					<li class="searchEntry">Group:</li>
 					<li>
@@ -104,17 +110,17 @@
 						<input type="text" id="endDate" />
 					</li>
 					
-					<li class="searchEntry">Category 1:<span style="float:right"><input type="checkbox" id="showCat1Text" value="1" checked="" />&nbsp;Show Text</span></li>
+					<li class="searchEntry">Category 1:<span style="float:right;display:none"><input type="checkbox" id="showCat1Text" value="1" checked="" onchange="javascript:showHideText(this.checked, 1);" />&nbsp;Show Text</span></li>
 					<li>
 						<select id="cat1"></select>
 					</li>
 					
-					<li class="searchEntry">Category 2:<span style="float:right"><input type="checkbox" id="showCat2Text" value="0" />&nbsp;Show Text</span></li>
+					<li class="searchEntry">Category 2:<span style="float:right;display:none"><input type="checkbox" id="showCat2Text" value="1" checked="" onchange="javascript:showHideText(this.checked, 2);" />&nbsp;Show Text</span></li>
 					<li>
 						<select id="cat2"></select>
 					</li>
 					
-					<li class="searchEntry">Category 3:<span style="float:right"><input type="checkbox" id="showCat3Text" value="0" />&nbsp;Show Text</span></li>
+					<li class="searchEntry">Category 3:<span style="float:right;display:none"><input type="checkbox" id="showCat3Text" value="1" checked="" onchange="javascript:showHideText(this.checked, 3);" />&nbsp;Show Text</span></li>
 					<li>
 						<select id="cat3"></select>
 					</li>
@@ -122,8 +128,8 @@
 					<li class="searchEntry">Chart Type:</li>
 					<li>
 						<select id="chartType">
-							<option value="icicle">Icicle</option>
 							<option value="sunburst">Sunburst</option>
+							<option value="icicle">Icicle</option>
 						</select>
 					</li>
 
@@ -132,9 +138,17 @@
 						<input type="button" id="search" value="Search" onclick="getFlare();" />
 						<input type="button" id="reset_filter" value="Reset Filter" onclick="resetFilter();" />
 					</li>
+					<br />
+					<br />
+					<li class="searchEntry">Click Action:</li>
+					<li>
+						<input type="radio" name="click_action" value="zoom" checked="true">Zoom</input><br />
+						<input type="radio" name="click_action" value="purge_all">Purge All Similar Nodes</input><br />
+						<input type="radio" name="click_action" value="purge">Purge That Clicked Node</input>
+					</li>
 				</ul>
 			</div>
-			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			<div id="divResults" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="overflow:hidden;">
 <!--
 				<div class="row placeholders">
 					<div class="col-xs-4 col-sm-4 placeholder">
@@ -149,7 +163,7 @@
 -->
 				<div class="row">
 					<span id="spanTotal" style="float:right;display:none;"></span>
-					<h3 id="searchResults" class="page-header" style="display:none;">Search Results</h3>
+					<h3 id="searchResults" class="page-header" style="margin:0px;display:none;">Search Results</h3>
 					<div id="chart" align="center" class="col-xs-12 col-sm-12"></div>
 
 					<div id="error"></div>
@@ -167,7 +181,7 @@
 		<script type="text/javascript" src="/js/jquery/jquery-ui.min.js"></script>
 
 		<!-- Latest compiled and minified JavaScript -->
-		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/js/bootstrap/bootstrap.min.js"></script>
 
 		<script type="text/javascript" src="/js/dialog.js"></script>
 		<script type="text/javascript" src="/js/graphs.js"></script>

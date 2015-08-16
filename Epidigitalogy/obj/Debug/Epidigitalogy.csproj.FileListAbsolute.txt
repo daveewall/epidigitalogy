@@ -3,8 +3,7 @@ C:\Projects\epidigitalogy\WebApp\Epidigitalogy\bin\epidigitalogy.pdb
 C:\Projects\epidigitalogy\WebApp\Epidigitalogy\obj\Debug\epidigitalogy.dll
 C:\Projects\epidigitalogy\WebApp\Epidigitalogy\obj\Debug\epidigitalogy.pdb
 C:\Projects\epidigitalogy\WebApp\Epidigitalogy\obj\Debug\Epidigitalogy.csprojResolveAssemblyReference.cache
-C:\Projects\epidigitalogy-github\Epidigitalogy\obj\Debug\Epidigitalogy.csprojResolveAssemblyReference.cache
-C:\Projects\epidigitalogy-github\Epidigitalogy\obj\Debug\epidigitalogy.dll
-C:\Projects\epidigitalogy-github\Epidigitalogy\obj\Debug\epidigitalogy.pdb
 C:\Projects\epidigitalogy-github\Epidigitalogy\bin\epidigitalogy.dll
 C:\Projects\epidigitalogy-github\Epidigitalogy\bin\epidigitalogy.pdb
+C:\Projects\epidigitalogy-github\Epidigitalogy\obj\Debug\epidigitalogy.dll
+C:\Projects\epidigitalogy-github\Epidigitalogy\obj\Debug\epidigitalogy.pdb

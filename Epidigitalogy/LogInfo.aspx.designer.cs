@@ -10,6 +10,6 @@
 namespace epidigitalogy {
     
     
-    public partial class GetLogInfo {
+    public partial class LogInfo {
     }
 }

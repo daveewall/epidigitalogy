@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="LogInfo.aspx.cs" Inherits="epidigitalogy.GetLogInfo" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="LogInfo.aspx.cs" Inherits="epidigitalogy.LogInfo" %>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -10,10 +10,10 @@
 		<title>Digital Disease Tracking Chart</title>
 
 		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
 
 		<!-- Optional theme -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="/css/bootstrap/bootstrap-theme.min.css">
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -224,7 +224,7 @@
 		<script type="text/javascript" src="/js/jquery/jquery-ui.min.js"></script>
 
 		<!-- Latest compiled and minified JavaScript -->
-		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/js/bootstrap/bootstrap.min.js"></script>
 
 		<script type="text/javascript" src="/js/dialog.js"></script>
 		<script type="text/javascript" src="/js/chart.js"></script>
